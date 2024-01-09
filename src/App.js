@@ -8,23 +8,22 @@ import { Link, useParams } from "react-router-dom";
 
 function App() {
 
-  const App = () => {
     const [productdata,setproductdata]= useState([]);
     const [category, setcategory] = useState([]);
     
 
-  const myfun = (items) => {
+//   const myfun = (items) => {
   
           
-    axios.get(`https://dummyjson.com/products/category/${items}`)
-    .then(function (response) {
-        console.log(response.data.products);
-        setproductdata(response.data.products);
-    })
-    .catch(function (error) {
-        console.log(error);
-    })
-  }
+//     axios.get(`https://dummyjson.com/products/category/${items}`)
+//     .then(function (response) {
+//         console.log(response.data.products);
+//         setproductdata(response.data.products);
+//     })
+//     .catch(function (error) {
+//         console.log(error);
+//     })
+//   }
   
   useEffect(() => {
     axios.get('https://dummyjson.com/products')
@@ -36,32 +35,31 @@ function App() {
             console.log(error);
         })
   
-    axios.get('https://dummyjson.com/products/categories')
-        .then(function (response) {
-            console.log(response.data);
-            setcategory(response.data);
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
-  
-    axios.get()   
+    // axios.get('https://dummyjson.com/products/categories')
+    //     .then(function (response) {
+    //         console.log(response.data);
+    //         setcategory(response.data);
+    //     })
+    //     .catch(function (error) {
+    //         console.log(error);
+    //     })
+   
   }, []) 
-};
    
   return (
     <>
             <section className="py-5">
+                <h1 className='mb-5 text-center'>All Products</h1>
                 <div className="container">
                     <div className="row">
                         {
-                            category.map((item) => {
+                            productdata.map((item) => {
                                 return (
                                    
                                         <div className="col-lg-4 col-md-6 mb-5">
                                             <div className="card product_card mb-3 h-100 mx-2">
                                                 <div className="product_img">
-                                                    <img src={item.thumbnail} alt="" />
+                                                    <img src={item.thumbnail} className='w-100' alt="" />
                                                 </div>
                                                 <div className="card-body pb-0 ps-4">
                                                     <ul>
@@ -90,9 +88,9 @@ function App() {
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <div className="px-3">
+                                                {/* <div className="px-3">
                                                     <Link to={`/product/${item.id}`} className="btn btn-outline-primary w-100 mx-auto mb-3 rounded-0 text-decoration-none">Product Details Views</Link>
-                                                </div>
+                                                </div> */}
                                             </div>
                                         </div>
                                    
